@@ -26,4 +26,6 @@
   <img src="resources/images/section-webworker-1.png">
   
 ---------
-
+二. jsonp    
+&ensp;&ensp;实现原理：基于script标签的请求方式，前台请求时向后台传递执行的方法名，后台拼装成请求数据作为参数的函数调用，因为是script的请求方式，前台接受数据时会当js执行（类似于eval 执行）
+---------
