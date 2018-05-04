@@ -1,5 +1,5 @@
 // add by yanyj 20180503 start
-// jsonp的个人实现
+// jsonp的个人简单实现
 let http = require('http');
 let url = require('url');
 
@@ -15,5 +15,4 @@ http.createServer(function (req, res) {
 }).listen(8088, function () {
    console.log('jsonp 服务建立成功')
 });
-
 // add by yanyj 20180503 end

@@ -11,7 +11,9 @@
 </html>
 <script type="text/javascript">
 
-    fetch('http://localhost:8088/?callback=console.log')
+    fetch('http://127.0.0.1:8088/?callback=console.log').then(function (res) {
+        console.log(res.text())
+    })
 
     // document.getElementsByTagName("body")[0].innerHTML =
 
