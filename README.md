@@ -27,11 +27,11 @@
   
 ---------  
 
-二. jsonp    
+二. **jsonp**    
 &ensp;&ensp;实现原理：基于script标签的请求方式，前台请求时向后台传递执行的方法名，后台拼装成请求数据作为参数的函数调用，因为是script的请求方式，前台接受数据时会当js执行（类似于eval 执行)  
 
 --------- 
 
-三. BigInt (*待更新，目前只能在chrome67中支持，提案进入stage-3，只实现了syntax,未实现transform*)  
+三. **BigInt** *<a href="https://zhuanlan.zhihu.com/p/36330307">教程</a>* (*待更新，目前只能在chrome67中支持，提案进入stage-3，只实现了syntax,未实现transform*)  
 
 ---------
