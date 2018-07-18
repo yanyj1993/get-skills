@@ -35,3 +35,7 @@
 三. **BigInt** *<a href="https://zhuanlan.zhihu.com/p/36330307">教程</a>* (*待更新，目前只能在chrome67中支持，提案进入stage-3，只实现了syntax,未实现transform*)  
 
 ---------
+
+四. **ECMAScript Features**  
+&ensp;&ensp;ES的新特性学习，清单如下：  
+ 1.Symbol*<a href=''>教程</a>*

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>图片颜色反转</title>
+</head>
+<body>
+
+<canvas id="canvas" width="900" height="400"></canvas>
+
+</body>
+<script type="text/javascript">
+    let canvas = document.getElementById('canvas');
+    let ctx = canvas.getContext('2d');
+
+    let drawImage = () => {
+        let img = new Image();
+        img.src = '../../resources/images/Desert.jpg';
+        img.onload = () => {
+            ctx.drawImage(img, 0, 0, 400, 400);
+            let imgData=ctx.getImageData(0, 0, 400,400);
+            let data=imgData.data;
+            console.log(data);
+            for(let i=0;i<data.length;i+=4){
+
+                data[i]=255-data[i];
+                data[i+1]=255-data[i+1];
+                data[i+2]=255-data[i+2];
+                data[i+3]=255;
+
+            }
+            ctx.putImageData(imgData, 500, 0);
+        }
+    };
+    
+    drawImage();
+</script>
+</html>

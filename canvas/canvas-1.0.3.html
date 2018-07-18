@@ -1,0 +1,58 @@
+<html>
+<head>
+    <title>Canvas 教程-mdn</title>
+
+</head>
+<body onload="drawBubble();">
+<canvas id="tutorial" width="150" height="150"></canvas>
+<script type="text/javascript">
+    var canvas = document.getElementById('tutorial');
+    var ctx = canvas.getContext('2d');
+
+    function draw() {
+
+
+        ctx.fillRect(25, 25, 100, 100);
+        ctx.clearRect(45, 45, 60, 60);
+        ctx.strokeRect(50, 50, 50, 50);
+    }
+
+    let drawTriangle = () => {
+        ctx.beginPath();
+        ctx.moveTo(75, 50);
+        ctx.lineTo(100, 75);
+        ctx.lineTo(100, 25);
+        ctx.fill();
+    };
+
+    let drawSmileFace = () => {
+
+        ctx.beginPath();
+        ctx.arc(75, 75, 50, 0, 2 * Math.PI, true);
+        ctx.moveTo(110, 75);
+        ctx.arc(75, 75, 35, 0, Math.PI, false);
+        ctx.moveTo(65, 65);
+        ctx.arc(60, 65, 5, 0, 2*Math.PI, true);
+        ctx.moveTo(95, 65);
+        ctx.arc(90, 65, 5, 0, 2*Math.PI, true);
+        ctx.stroke();
+    };
+
+    let drawBubble = () => {
+        ctx.beginPath();
+        ctx.moveTo(75, 25);
+        ctx.quadraticCurveTo(25, 25, 25, 62.5);
+        ctx.quadraticCurveTo(25, 100, 50, 100);
+        ctx.quadraticCurveTo(50, 120, 30, 125);
+        ctx.quadraticCurveTo(60, 120, 65, 100);
+
+        ctx.stroke()
+    }
+</script>
+<style type="text/css">
+    canvas {
+        border: 1px solid black;
+    }
+</style>
+</body>
+</html>

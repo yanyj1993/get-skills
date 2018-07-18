@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>k线图</title>
+</head>
+<body>
+
+<canvas id="canvas" width="300" height="200"></canvas>
+
+</body>
+<script type="text/javascript">
+    let loadData = function (data) {
+        console.log(data);
+    };
+
+    // 加载最近30个交易日的K线图数据:
+    var js = document.createElement('script');
+    js.src = 'http://img1.money.126.net/data/hs/kline/day/history/2015/0000001.json?callback=loadData&t=' + Date.now();
+    document.getElementsByTagName('head')[0].appendChild(js);
+</script>
+</html>
