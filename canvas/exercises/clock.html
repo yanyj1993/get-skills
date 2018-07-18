@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>canvas - 钟</title>
+</head>
+<body onload="clock()">
+<canvas id="canvas" width="400" height="400" ></canvas>
+</body>
+<script type="text/javascript">
+
+
+
+
+    function clock() {
+        ctx = document.getElementById('canvas').getContext('2d');
+        drawChassis();
+
+        drawHourScales();
+
+        drawMinuteScales();
+
+        drawNowTime();
+        window.requestAnimationFrame(clock);
+    }
+
+    // 绘制底盘
+    function drawChassis() {
+        ctx.save();
+        ctx.clearRect(0, 0, 400, 400);
+        ctx.translate(200, 200); // 移动到画布中心
+        ctx.rotate(-Math.PI/2); // 将坐标轴逆时针旋转90度， X轴正方向对准12点方向
+
+        let lingrad = ctx.createLinearGradient(150, 0, -150, 0);
+        lingrad.addColorStop(0, '#242f37');
+        lingrad.addColorStop(1, '#48585c');
+        ctx.fillStyle = lingrad;
+        ctx.beginPath();
+        ctx.arc(0, 0, 150, 0, Math.PI * 2, true);
+        ctx.fill();
+        // ctx.restore();
+    }
+
+    // 绘制时钟刻度
+    function drawHourScales() {
+        ctx.save();
+        for(let i = 0; i < 12; i++) {
+            ctx.beginPath();
+            ctx.strokeStyle = '#fff';
+            ctx.lineWidth = 3;
+            ctx.rotate(Math.PI / 6);
+            ctx.moveTo(140, 0);
+            ctx.lineTo(120, 0);
+            ctx.stroke();
+        }
+
+        // ctx.beginPath();
+        ctx.restore();
+    }
+
+    // 绘制分钟刻度
+    function drawMinuteScales() {
+        ctx.save();
+        ctx.beginPath();
+        for(let i = 0; i < 60; i++) {
+
+            if(i % 5 !== 0) {// 与时钟刻度一致时，则跳过
+                ctx.beginPath();
+                ctx.strokeStyle = '#536b7a';
+                ctx.lineWidth = 2;
+                ctx.moveTo(140, 0);
+                ctx.lineTo(130, 0);
+                ctx.stroke();
+            }
+            ctx.rotate(Math.PI/30);
+        }
+        ctx.restore();
+        // ctx.beginPath()
+    }
+
+    // 画时钟
+    function drawNowTime() {
+
+        let time = getTime();
+        ctx.strokeStyle = '#fff';
+        ctx.save();
+        ctx.lineWidth = 5;
+        ctx.rotate(time.hour * (Math.PI/6) + time.min * (Math.PI / 360) + time.sec * (Math.PI / 21600))
+        ctx.beginPath();
+        ctx.moveTo(0, 0);
+        ctx.lineTo(80, 0);
+        ctx.stroke();
+        ctx.restore();
+
+        // 分钟
+        ctx.save();
+        ctx.lineWidth = 4;
+        ctx.rotate(time.min * (Math.PI / 30) + time.sec * (Math.PI/1800));
+        ctx.beginPath();
+        ctx.moveTo(0, 0);
+        ctx.lineTo(120, 0);
+        ctx.stroke();
+        ctx.restore();
+
+        // 秒针
+        ctx.save();
+        ctx.lineWidth = 3;
+        ctx.rotate(time.sec * (Math.PI / 30));
+        ctx.beginPath();
+        ctx.moveTo(0, 0);
+        ctx.lineTo(140, 0);
+        ctx.stroke();
+        ctx.restore();
+
+        // ctx.beginPath();
+        ctx.restore();
+    }
+
+
+    // 获取时间
+    function getTime() {
+        let now = new Date();
+        let hour = now.getHours();
+        return {
+            sec: now.getSeconds(),
+            min: now.getMinutes(),
+            hour: hour > 12 ? hour - 12 : hour
+        }
+    }
+
+
+</script>
+</html>
